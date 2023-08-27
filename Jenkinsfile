@@ -27,8 +27,8 @@ node ('ubuntu-agent'){
    stage("Generate Software Bill of Materials (sbom) with Syft"){
 	sh 'pwd'
         sh '''
-	    syft app:${BUILD_NUMBER} --scope all-layers -o json > sbom-${BUILD_NUMBER}.json
-            syft app:${BUILD_NUMBER} --scope all-layers -o table > sbom-${BUILD_NUMBER}.txt
+	    syft app --scope all-layers -o json > sbom-${BUILD_NUMBER}.json
+            syft app --scope all-layers -o table > sbom-${BUILD_NUMBER}.txt
 
         '''
     			
