@@ -28,8 +28,11 @@ node ('ubuntu-agent'){
 	sh 'pwd'
         sh '''
             /* curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin */
-            syft app:${BUILD_NUMBER} --scope all-layers -o json > sbom-${BUILD_NUMBER}.json
-            syft app:${BUILD_NUMBER} --scope all-layers -o table > sbom-${BUILD_NUMBER}.txt
+            /*syft app:${BUILD_NUMBER} --scope all-layers -o json > sbom-${BUILD_NUMBER}.json
+            syft app:${BUILD_NUMBER} --scope all-layers -o table > sbom-${BUILD_NUMBER}.txt*/
+	    syft dir:. --scope all-layers -o json > sbom-${BUILD_NUMBER}.json
+            syft dir:. --scope all-layers -o table > sbom-${BUILD_NUMBER}.txt
+
         '''
     			
 	} 
